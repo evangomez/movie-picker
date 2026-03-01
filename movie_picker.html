@@ -68,10 +68,14 @@
     </div>
 
     <script>
-        // Connect to my LOCAL Supabase instance running on this Mac
-        // Using the Mac's hostname (Evans-MacBook-Air.local) so all devices on the network can reach it
-        // without the IP address ever changing. The key is the anon/publishable key — safe for local use.
-        const client = supabase.createClient('http://Evans-MacBook-Air.local:54321', 'sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH');
+        // SUPABASE CONNECTION
+        // For local use (home network): 'http://Evans-MacBook-Air.local:54321'
+        // For cloud/Fly.io use: replace with your Supabase.com project URL and anon key
+        //   URL looks like: https://xyzxyzxyz.supabase.co
+        //   Key found at: supabase.com → your project → Settings → API → anon public
+        const SUPABASE_URL = 'http://Evans-MacBook-Air.local:54321';
+        const SUPABASE_KEY = 'sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH';
+        const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         // suggestions = { "Movie Title": count } — count tracks duplicates if someone adds the same movie twice
         let suggestions = {};
