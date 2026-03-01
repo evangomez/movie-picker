@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Roulette Pro</title>
+
+    <!-- Supabase JS library loaded from CDN — this is what lets the app talk to my database -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        /* Dark space-themed background, centered layout */
+        body { font-family: sans-serif; background: #1a1a2e; color: white; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+
+        /* Side-by-side layout: input panel on the left, spinning wheel on the right */
+        .container { display: flex; gap: 40px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+
+        /* The card on the left where you type in movie names */
+        .input-section { background: #16213e; padding: 20px; border-radius: 12px; width: 320px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+
+        input { padding: 10px; width: 60%; border-radius: 4px; border: none; }
+        button { padding: 10px; cursor: pointer; background: #e94560; color: white; border: none; border-radius: 4px; font-weight: bold; }
+        button:disabled { background: #444; cursor: not-allowed; }
+
+        /* The spinning wheel itself — CSS transition handles the smooth spin animation */
+        #wheel-container { position: relative; width: 400px; height: 400px; }
+        canvas { border-radius: 50%; border: 5px solid #0f3460; transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1); background: #0f3460; }
+
+        /* The red triangle pointer at the top of the wheel */
+        #pointer { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 30px solid #e94560; z-index: 10; }
+
+        /* Each movie in the list has its name and a delete button side by side */
+        .list-item { display: flex; justify-content: space-between; align-items: center; padding: 8px; border-bottom: 1px solid #333; }
+        .del-btn { background: #ff4d6d; border: none; color: white; border-radius: 4px; padding: 2px 8px; cursor: pointer; font-size: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>🎬 Family Movie Picker! 🦧</h1>
+    <!-- This shows which machine is hosting — useful when sharing over local network -->
+    <p>Host: Evan's Mac</p>
+
+    <div class="container">
+        <!-- LEFT PANEL: type a movie name and hit Add, it goes into the Supabase DB -->
+        <div class="input-section">
+            <div style="display:flex; gap:5px;">
+                <input type="text" id="movieInput" placeholder="Add movie...">
+                <button id="addBtn" onclick="addMovie()">Add</button>
+            </div>
+
+            <!-- The movie list auto-updates in real time across all devices on my network -->
+            <div id="movieList" style="margin-top:20px; max-height: 250px; overflow-y: auto;"></div>
+            <br>
+
+            <!-- Spin button — disabled while a spin is in progress so nobody can double-spin -->
+            <button id="spinBtn" onclick="spinWheel()" style="width:100%; background:#4ecca3; color:#1a1a2e;">SPIN WHEEL</button>
+            <button onclick="resetWinner()" style="width:100%; background:transparent; border:1px solid #444; margin-top:10px; color:#888; font-size:0.8em;">Clear Result</button>
+        </div>
+
+        <!-- RIGHT PANEL: canvas wheel + winner display -->
+        <div id="wheel-container">
+            <div id="pointer"></div>
+            <canvas id="wheel" width="400" height="400"></canvas>
+            <!-- Winner text shows up here after the spin — with a monkey emoji because why not -->
+            <div id="winner-display" style="text-align:center; font-size:1.5em; margin-top:20px; color:#4ecca3; font-weight:bold; min-height: 1.5em;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Connect to my LOCAL Supabase instance running on this Mac
+        // The IP (192.168.68.60) is my Mac's address on the home network
+        // The key is the anon/publishable key — safe to expose for local use
+        const client = supabase.createClient('http://192.168.68.60:54321', 'sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH');
+
+        // suggestions = { "Movie Title": count } — count tracks duplicates if someone adds the same movie twice
+        let suggestions = {};
+        let rotation = 0;   // tracks total degrees spun so CSS transform keeps accumulating correctly
+        let isBusy = false; // true while the wheel is spinning — blocks extra clicks
+
+        // Pull current movie list and winner status from Supabase on page load (or after any change)
+        async function loadData() {
+            try {
+                const { data: movies } = await client.from('movie_pool').select('title');
+                suggestions = {};
+                // Build the count map — same title added twice = bigger slice on the wheel
+                if (movies) movies.forEach(m => { suggestions[m.title] = (suggestions[m.title] || 0) + 1; });
+
+                // Restore the last winner if the page is refreshed mid-result
+                const { data: status } = await client.from('spin_status').select('*').eq('id', 1).single();
+                if (status && status.last_winner && !status.is_spinning) {
+                    document.getElementById('winner-display').innerText = "WINNER: " + status.last_winner;
+                }
+                renderUI();
+            } catch (e) { console.error(e); }
+        }
+
+        // Insert a new movie title into the DB — real-time subscription will update all devices instantly
+        async function addMovie() {
+            const val = document.getElementById('movieInput').value.trim();
+            if (!val || isBusy) return;
+            await client.from('movie_pool').insert([{ title: val }]);
+            document.getElementById('movieInput').value = '';
+        }
+
+        // Remove all rows with this title from the pool
+        async function deleteMovie(title) {
+            if (isBusy) return;
+            await client.from('movie_pool').delete().eq('title', title);
+        }
+
+        // Clear the winner display — useful between rounds
+        async function resetWinner() {
+            await client.from('spin_status').update({ is_spinning: false, last_winner: '' }).eq('id', 1);
+            document.getElementById('winner-display').innerText = "";
+        }
+
+        async function spinWheel() {
+            const total = Object.values(suggestions).reduce((a, b) => a + b, 0);
+            if (total === 0 || isBusy) return;
+
+            // Flag spin as started in DB — this disables Add/Spin buttons on ALL devices
+            await client.from('spin_status').update({ is_spinning: true, last_winner: '...' }).eq('id', 1);
+
+            // Random spin between 10–15 full rotations for drama
+            const addedRotation = (10 + Math.random() * 5) * 360;
+            rotation += addedRotation;
+
+            // Figure out which slice the pointer lands on after the spin
+            const normalized = (360 - (rotation % 360) - 90) % 360;
+            const finalAngle = normalized < 0 ? normalized + 360 : normalized;
+            let currentAngle = 0;
+            let winner = "";
+            for (const [name, count] of Object.entries(suggestions)) {
+                const sliceDeg = (count / total) * 360;
+                if (finalAngle >= currentAngle && finalAngle < currentAngle + sliceDeg) {
+                    winner = name;
+                    break;
+                }
+                currentAngle += sliceDeg;
+            }
+
+            // Wait 4 seconds (matches the CSS spin animation) then post the winner to DB
+            setTimeout(async () => {
+                await client.from('spin_status').update({ is_spinning: false, last_winner: winner.toUpperCase() }).eq('id', 1);
+            }, 4000);
+        }
+
+        // Re-render the movie list and redraw the wheel canvas whenever data changes
+        function renderUI() {
+            const list = document.getElementById('movieList');
+            list.innerHTML = '';
+            for (const [name, count] of Object.entries(suggestions)) {
+                list.innerHTML += `<div class="list-item"><span>${name} (${count})</span>
+                <button class="del-btn" onclick="deleteMovie('${name}')" ${isBusy ? 'disabled' : ''}>X</button></div>`;
+            }
+            draw();
+        }
+
+        // Draw the wheel slices on the canvas — each movie gets a proportional colored wedge
+        function draw() {
+            const canvas = document.getElementById('wheel');
+            const ctx = canvas.getContext('2d');
+            const total = Object.values(suggestions).reduce((a, b) => a + b, 0);
+            ctx.clearRect(0, 0, 400, 400);
+            if (total === 0) return;
+            let angle = 0;
+            const colors = ["#e94560", "#0f3460", "#533483", "#4ecca3", "#fca311"];
+            Object.entries(suggestions).forEach(([name, count], i) => {
+                const slice = (count / total) * 2 * Math.PI;
+                ctx.beginPath();
+                ctx.fillStyle = colors[i % colors.length]; // cycles through 5 colors
+                ctx.moveTo(200, 200);
+                ctx.arc(200, 200, 200, angle, angle + slice);
+                ctx.fill();
+                // Draw the movie title text rotated into the middle of each slice
+                ctx.save();
+                ctx.translate(200, 200);
+                ctx.rotate(angle + slice / 2);
+                ctx.fillStyle = "white";
+                ctx.font = "bold 14px Arial";
+                ctx.fillText(name.substring(0, 15), 70, 5); // truncate long titles at 15 chars
+                ctx.restore();
+                angle += slice;
+            });
+        }
+
+        // Real-time listener: any change to the movie list reloads data on all connected devices
+        client.channel('any').on('postgres_changes', { event: '*', schema: 'public', table: 'movie_pool' }, loadData).subscribe();
+
+        // Real-time listener: spin_status changes sync the wheel animation and winner across devices
+        client.channel('status').on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'spin_status' }, (payload) => {
+            const s = payload.new;
+            isBusy = s.is_spinning;
+            document.getElementById('spinBtn').disabled = isBusy;
+            document.getElementById('addBtn').disabled = isBusy;
+            if (isBusy) {
+                // Kick off the visual spin animation — everyone sees the wheel spin in sync
+                document.getElementById('winner-display').innerText = "SPINNING...";
+                rotation += (10 + Math.random() * 2) * 360;
+                document.getElementById('wheel').style.transform = `rotate(${rotation}deg)`;
+            } else {
+                // Spin is done — show the winner with a monkey emoji
+                if (s.last_winner) {
+                    document.getElementById('winner-display').innerText = "WINNER: " + s.last_winner + " 🐵";
+                } else {
+                    document.getElementById('winner-display').innerText = "";
+                }
+                renderUI();
+            }
+        }).subscribe();
+
+        // Kick everything off on page load
+        loadData();
+    </script>
+</body>
+</html>
