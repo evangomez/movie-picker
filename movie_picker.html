@@ -73,8 +73,8 @@
         // For cloud/Fly.io use: replace with your Supabase.com project URL and anon key
         //   URL looks like: https://xyzxyzxyz.supabase.co
         //   Key found at: supabase.com → your project → Settings → API → anon public
-        const SUPABASE_URL = 'http://Evans-MacBook-Air.local:54321';
-        const SUPABASE_KEY = 'sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH';
+        const SUPABASE_URL = 'https://bonczpslnzryyfcanruq.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJvbmN6cHNsbnpyeXlmY2FucnVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzODY5ODAsImV4cCI6MjA4Nzk2Mjk4MH0.6BDloU6IzXIGxuIL1UOykMIUff3HBsvfuHPkUnDfwMg';
         const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         // suggestions = { "Movie Title": count } — count tracks duplicates if someone adds the same movie twice
