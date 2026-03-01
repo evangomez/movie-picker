@@ -54,6 +54,8 @@
             <!-- Spin button — disabled while a spin is in progress so nobody can double-spin -->
             <button id="spinBtn" onclick="spinWheel()" style="width:100%; background:#4ecca3; color:#1a1a2e;">SPIN WHEEL</button>
             <button onclick="resetWinner()" style="width:100%; background:transparent; border:1px solid #444; margin-top:10px; color:#888; font-size:0.8em;">Clear Result</button>
+            <!-- Wipes the entire movie list — shows a confirm dialog first so nobody does it by accident -->
+            <button onclick="clearAllMovies()" style="width:100%; background:transparent; border:1px solid #662233; margin-top:6px; color:#ff4d6d; font-size:0.8em;">Clear All Movies</button>
         </div>
 
         <!-- RIGHT PANEL: canvas wheel + winner display -->
@@ -67,9 +69,9 @@
 
     <script>
         // Connect to my LOCAL Supabase instance running on this Mac
-        // The IP (192.168.68.60) is my Mac's address on the home network
-        // The key is the anon/publishable key — safe to expose for local use
-        const client = supabase.createClient('http://192.168.68.60:54321', 'sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH');
+        // Using the Mac's hostname (Evans-MacBook-Air.local) so all devices on the network can reach it
+        // without the IP address ever changing. The key is the anon/publishable key — safe for local use.
+        const client = supabase.createClient('http://Evans-MacBook-Air.local:54321', 'sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH');
 
         // suggestions = { "Movie Title": count } — count tracks duplicates if someone adds the same movie twice
         let suggestions = {};
@@ -93,18 +95,30 @@
             } catch (e) { console.error(e); }
         }
 
-        // Insert a new movie title into the DB — real-time subscription will update all devices instantly
+        // Insert a new movie title into the DB — real-time subscription updates all devices,
+        // but we also call loadData() directly as a fallback in case realtime is slow
         async function addMovie() {
             const val = document.getElementById('movieInput').value.trim();
             if (!val || isBusy) return;
             await client.from('movie_pool').insert([{ title: val }]);
             document.getElementById('movieInput').value = '';
+            loadData();
         }
 
-        // Remove all rows with this title from the pool
+        // Remove all rows with this title from the pool, then refresh immediately
         async function deleteMovie(title) {
             if (isBusy) return;
             await client.from('movie_pool').delete().eq('title', title);
+            loadData();
+        }
+
+        // Wipe every movie from the pool — useful to start fresh for a new night
+        async function clearAllMovies() {
+            if (isBusy) return;
+            if (!confirm('Clear all movies from the list?')) return;
+            await client.from('movie_pool').delete().neq('id', 0); // neq(id, 0) matches all rows
+            await resetWinner();
+            loadData();
         }
 
         // Clear the winner display — useful between rounds
