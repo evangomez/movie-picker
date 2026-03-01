@@ -1,0 +1,318 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1323, in <module>
+    test(
+    ~~~~^
+        HandlerClass=handler_class,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        protocol=args.protocol,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1270, in test
+    with ServerClass(addr, HandlerClass) as httpd:
+         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1317, in server_bind
+    return super().server_bind()
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 48] Address already in use
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1323, in <module>
+    test(
+    ~~~~^
+        HandlerClass=handler_class,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        protocol=args.protocol,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1270, in test
+    with ServerClass(addr, HandlerClass) as httpd:
+         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1317, in server_bind
+    return super().server_bind()
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 48] Address already in use
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1323, in <module>
+    test(
+    ~~~~^
+        HandlerClass=handler_class,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        protocol=args.protocol,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1270, in test
+    with ServerClass(addr, HandlerClass) as httpd:
+         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1317, in server_bind
+    return super().server_bind()
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 48] Address already in use
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1323, in <module>
+    test(
+    ~~~~^
+        HandlerClass=handler_class,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        protocol=args.protocol,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1270, in test
+    with ServerClass(addr, HandlerClass) as httpd:
+         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1317, in server_bind
+    return super().server_bind()
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 48] Address already in use
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1323, in <module>
+    test(
+    ~~~~^
+        HandlerClass=handler_class,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        protocol=args.protocol,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1270, in test
+    with ServerClass(addr, HandlerClass) as httpd:
+         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1317, in server_bind
+    return super().server_bind()
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 48] Address already in use
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1323, in <module>
+    test(
+    ~~~~^
+        HandlerClass=handler_class,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        protocol=args.protocol,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1270, in test
+    with ServerClass(addr, HandlerClass) as httpd:
+         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1317, in server_bind
+    return super().server_bind()
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 48] Address already in use
+::1 - - [28/Feb/2026 19:43:10] "GET /movie_picker.html HTTP/1.1" 200 -
+::1 - - [28/Feb/2026 19:43:10] code 404, message File not found
+::1 - - [28/Feb/2026 19:43:10] "GET /favicon.ico HTTP/1.1" 404 -
+::ffff:192.168.68.58 - - [28/Feb/2026 19:43:16] code 404, message File not found
+::ffff:192.168.68.58 - - [28/Feb/2026 19:43:16] "GET /mover_picker_demo_1.html HTTP/1.1" 404 -
+::ffff:192.168.68.58 - - [28/Feb/2026 19:43:29] code 404, message File not found
+::ffff:192.168.68.58 - - [28/Feb/2026 19:43:29] "GET /mover_picker_demo_1.html HTTP/1.1" 404 -
+::ffff:192.168.68.58 - - [28/Feb/2026 19:43:51] code 404, message File not found
+::ffff:192.168.68.58 - - [28/Feb/2026 19:43:51] "GET /mover_picker_demo_1.html HTTP/1.1" 404 -
+----------------------------------------
+Exception occurred during processing of request from ('::ffff:192.168.68.58', 56328, 0, 0)
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1320, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             directory=args.directory)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 672, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 404, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+ConnectionResetError: [Errno 54] Connection reset by peer
+----------------------------------------
+::ffff:192.168.68.58 - - [28/Feb/2026 19:44:34] "GET /movie_picker.html HTTP/1.1" 200 -
+::ffff:192.168.68.58 - - [28/Feb/2026 19:44:34] code 404, message File not found
+::ffff:192.168.68.58 - - [28/Feb/2026 19:44:34] "GET /favicon.ico HTTP/1.1" 404 -
+::ffff:192.168.68.58 - - [28/Feb/2026 19:44:35] code 404, message File not found
+::ffff:192.168.68.58 - - [28/Feb/2026 19:44:35] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 -
+::ffff:192.168.68.58 - - [28/Feb/2026 19:44:35] code 404, message File not found
+::ffff:192.168.68.58 - - [28/Feb/2026 19:44:35] "GET /favicon.ico HTTP/1.1" 404 -
+::ffff:192.168.68.58 - - [28/Feb/2026 19:44:35] code 404, message File not found
+::ffff:192.168.68.58 - - [28/Feb/2026 19:44:35] "GET /apple-touch-icon.png HTTP/1.1" 404 -
+::ffff:192.168.68.58 - - [28/Feb/2026 19:45:37] "GET /movie_picker.html HTTP/1.1" 200 -
+::1 - - [28/Feb/2026 19:46:16] "GET /movie_picker.html HTTP/1.1" 200 -
+::1 - - [28/Feb/2026 19:46:17] "GET /movie_picker.html HTTP/1.1" 200 -
+::ffff:192.168.68.58 - - [28/Feb/2026 19:47:06] "GET /movie_picker.html HTTP/1.1" 200 -
+::ffff:192.168.68.58 - - [28/Feb/2026 19:47:07] "GET /movie_picker.html HTTP/1.1" 200 -
+::1 - - [28/Feb/2026 19:54:22] "GET /movie_picker.html HTTP/1.1" 200 -
+::ffff:192.168.68.58 - - [28/Feb/2026 19:54:35] "GET /movie_picker.html HTTP/1.1" 200 -
+::ffff:192.168.68.58 - - [28/Feb/2026 20:00:14] "GET /movie_picker.html HTTP/1.1" 200 -
+::ffff:192.168.68.58 - - [28/Feb/2026 20:05:02] "GET /movie_picker.html HTTP/1.1" 200 -
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:10] code 400, message Bad request version ('\\x00*ÚÚ\\x13\\x02\\x13\\x03\\x13\\x01À,À+Ì©À0À/Ì¨À')
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:10] "\x16\x03\x01\x06\x05\x01\x00\x06\x01\x03\x03rÉ\x17\x9bßg\x82Ï\x08X\\Í]ìÙÂÈ×+k* yr\x06·v@p\x10úx âY\x9e£Ç\x91¡!¯Í ¼\x81ÍÍ\x885\x948öÜSßò×ì\x83\x880\x85\x1f\x1d\x00*ÚÚ\x13\x02\x13\x03\x13\x01À,À+Ì©À0À/Ì¨À" 400 -
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:10] code 400, message Bad request version ("ÅÜ÷\\x8f[K[\\x170!4<'¾=ò\\x03qAc\\x91à\\x00*úú\\x13\\x02\\x13\\x03\\x13\\x01À,À+Ì©À0À/Ì¨À")
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:10] "\x16\x03\x01\x06\x05\x01\x00\x06\x01\x03\x03f\x1cP_×\x139àÚöKWÑ\x9dq\x99ð\x82ÝûQþ²vðzi[D\x82«½ â.ÝP¥²*yÑ\x1eÅÜ÷\x8f[K[\x170!4<'¾=ò\x03qAc\x91à\x00*úú\x13\x02\x13\x03\x13\x01À,À+Ì©À0À/Ì¨À" 400 -
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:10] code 400, message Bad request version ('Ö\\x81§Lj\\x87ÆÖÂ$©êÌ©ð\\x924\\x88\\x80\\x00*ÊÊ\\x13\\x02\\x13\\x03\\x13\\x01À,À+Ì©À0À/Ì¨À')
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:10] "\x16\x03\x01\x06\x05\x01\x00\x06\x01\x03\x03\x8c\x97bÿÎèòú\x19pê_2ç\x04ÊÍ\x90\x86\x84j~$1±à#ì\x91I-N ñ\x14\x82\x7f$\x96ò\x13\x94\x92\\ó Ö\x81§Lj\x87ÆÖÂ$©êÌ©ð\x924\x88\x80\x00*ÊÊ\x13\x02\x13\x03\x13\x01À,À+Ì©À0À/Ì¨À" 400 -
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:10] code 400, message Bad request version ('ý~X`\\x0fr\\x8c!Ý²ÞÖo³Zz©\\x00·\\x10Ä=\\x86]\\x980}\\x80B\\x86Ñ¤\\x00*\\x1a\\x1a\\x13\\x02\\x13\\x03\\x13\\x01À,À+Ì©À0À/Ì¨À')
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:10] "\x16\x03\x01\x06\x05\x01\x00\x06\x01\x03\x03åÇ\x05\x18ç¤­ì4\x1a\x92ê&áqY&õ³¼`ê\x1e¾!#ÿ2Òg¥ì ý~X`\x0fr\x8c!Ý²ÞÖo³Zz©\x00·\x10Ä=\x86]\x980}\x80B\x86Ñ¤\x00*\x1a\x1a\x13\x02\x13\x03\x13\x01À,À+Ì©À0À/Ì¨À" 400 -
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:10] "GET /movie_picker.html HTTP/1.1" 304 -
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:11] code 404, message File not found
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:11] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 -
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:11] code 404, message File not found
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:11] "GET /apple-touch-icon.png HTTP/1.1" 404 -
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:11] code 404, message File not found
+::ffff:192.168.68.58 - - [28/Feb/2026 20:58:11] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------------------
+Exception occurred during processing of request from ('::ffff:192.168.68.58', 56484, 0, 0)
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1320, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             directory=args.directory)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 672, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 404, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+ConnectionResetError: [Errno 54] Connection reset by peer
+----------------------------------------
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] code 400, message Bad request version ('?.á\\x95Ø\\x00æ:\\x0f¡\\x00***\\x13\\x02\\x13\\x03\\x13\\x01À,À+Ì©À0À/Ì¨À')
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] "\x16\x03\x01\x06\x05\x01\x00\x06\x01\x03\x03¹\x0fÑ¡O'\x1d\x0cÞ°lÂ0ð\x8eêuV\x0f9S\x88Ú\x97Î\x05\x90A£f\x8fý \x9aE{9gìõ^\x81\x86\x1d4\x8f\x01Rô6üè\x84*\x0c?.á\x95Ø\x00æ:\x0f¡\x00***\x13\x02\x13\x03\x13\x01À,À+Ì©À0À/Ì¨À" 400 -
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] code 400, message Bad request version ('G\\x8aúÞ\\x03>Ö2ð\\x01\\x91XèRª\\x03Þ\\x00*\\x1a\\x1a\\x13\\x02\\x13\\x03\\x13\\x01À,À+Ì©À0À/Ì¨À')
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] "\x16\x03\x01\x06\x05\x01\x00\x06\x01\x03\x03\x84î~²GÖ\x85Û|Z<#\x1c(Z\x11ôÂ)ñê\x01ºÖw¶¼A\x9e\x01\x06\x1b \x17|]\x01;/Úâ\x98Ôæ·E²\x0bG\x8aúÞ\x03>Ö2ð\x01\x91XèRª\x03Þ\x00*\x1a\x1a\x13\x02\x13\x03\x13\x01À,À+Ì©À0À/Ì¨À" 400 -
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] code 400, message Bad HTTP/0.9 request type ('\\x16\\x03\\x01\\x06\\x05\\x01\\x00\\x06\\x01\\x03\\x03\\x00GGÏx]¬ÀH¶Ó¿1ÃüÑ)¢R\\x03_\\x9cÖ±Ñì5èö¦úp')
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] "\x16\x03\x01\x06\x05\x01\x00\x06\x01\x03\x03\x00GGÏx]¬ÀH¶Ó¿1ÃüÑ)¢R\x03_\x9cÖ±Ñì5èö¦úp \x84\x0erÿ" 400 -
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] code 400, message Bad request version ('óÖ\\x7fgZzP\\x00*\\x1a\\x1a\\x13\\x02\\x13\\x03\\x13\\x01À,À+Ì©À0À/Ì¨À')
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] "\x16\x03\x01\x06\x05\x01\x00\x06\x01\x03\x03\x19êÖÝäæÞoI\x93Áüå\x08\x9f\x0d_;OO\x15w\x8f\x98´Ü]¦¸\x08ÆA \x0d\x03yüÞ\x06\x9d\x04ùËù\x07\x04Ñ\x9a½÷L\x8a\x9eÏoG\x9c óÖ\x7fgZzP\x00*\x1a\x1a\x13\x02\x13\x03\x13\x01À,À+Ì©À0À/Ì¨À" 400 -
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] "GET /movie_picker.html HTTP/1.1" 304 -
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] code 404, message File not found
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 -
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] code 404, message File not found
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] "GET /apple-touch-icon.png HTTP/1.1" 404 -
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] code 404, message File not found
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:07] "GET /favicon.ico HTTP/1.1" 404 -
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:08] "GET /movie_picker.html HTTP/1.1" 200 -
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:14] "GET /movie_picker.html HTTP/1.1" 200 -
+::ffff:192.168.68.65 - - [01/Mar/2026 09:40:18] "GET /movie_picker.html HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('::ffff:192.168.68.65', 54855, 0, 0)
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1320, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             directory=args.directory)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 672, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 404, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+ConnectionResetError: [Errno 54] Connection reset by peer
+----------------------------------------

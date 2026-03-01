@@ -1,4 +1,4 @@
-app = "movie-picker"
+app = "movie-picker-evan"
 primary_region = "lax"
 
 [build]
