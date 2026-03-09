@@ -142,14 +142,18 @@
             const addedRotation = (10 + Math.random() * 5) * 360;
             rotation += addedRotation;
 
+            // Apply the visual rotation NOW — before calculating the winner, using the same rotation value
+            document.getElementById('wheel').style.transform = `rotate(${rotation}deg)`;
+
             // Figure out which slice the pointer lands on after the spin
-            const normalized = (360 - (rotation % 360) - 90) % 360;
-            const finalAngle = normalized < 0 ? normalized + 360 : normalized;
+            // The pointer is at the top (12 o'clock). Canvas draws slices starting from 3 o'clock (angle=0 in canvas = right).
+            // We subtract 90 to shift the reference so 0 = top, matching the pointer position.
+            const normalized = ((-(rotation % 360) - 90) % 360 + 360) % 360;
             let currentAngle = 0;
             let winner = "";
             for (const [name, count] of Object.entries(suggestions)) {
                 const sliceDeg = (count / total) * 360;
-                if (finalAngle >= currentAngle && finalAngle < currentAngle + sliceDeg) {
+                if (normalized >= currentAngle && normalized < currentAngle + sliceDeg) {
                     winner = name;
                     break;
                 }
@@ -211,10 +215,8 @@
             document.getElementById('spinBtn').disabled = isBusy;
             document.getElementById('addBtn').disabled = isBusy;
             if (isBusy) {
-                // Kick off the visual spin animation — everyone sees the wheel spin in sync
+                // Show spinning state — the actual wheel transform is set by the device that clicked spin
                 document.getElementById('winner-display').innerText = "SPINNING...";
-                rotation += (10 + Math.random() * 2) * 360;
-                document.getElementById('wheel').style.transform = `rotate(${rotation}deg)`;
             } else {
                 // Spin is done — show the winner with a monkey emoji
                 if (s.last_winner) {
