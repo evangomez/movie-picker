@@ -2,15 +2,15 @@
 
 A real-time family movie picker with a spinning wheel. Everyone on the same WiFi network can open the page, add movies, and watch the wheel spin together — the result syncs live across all devices.
 
-Built by Evan. Runs off my Mac using a local Supabase database.
+Built by Evan. Uses cloud Supabase for the database, served locally from Evan's Mac.
 
 ---
 
 ## How It Works
 
-- Type a movie name and click **Add** — it goes into a Supabase database
+- Type a movie name and click **Add** — it goes into a Supabase cloud database
 - Hit **SPIN WHEEL** — the wheel spins and picks a winner
-- Everyone connected sees the spin and the winner at the same time (real-time sync via Supabase)
+- The device that spins shows the correct visual result; other devices see the winner text
 - Same movie added twice = bigger slice on the wheel
 
 ---
@@ -18,10 +18,10 @@ Built by Evan. Runs off my Mac using a local Supabase database.
 ## Requirements
 
 - Python 3 (built into macOS)
-- A local [Supabase](https://supabase.com) instance running on your machine with:
+- A [Supabase](https://supabase.com) project (cloud) with:
   - A `movie_pool` table with a `title` column
   - A `spin_status` table with columns: `id`, `is_spinning` (bool), `last_winner` (text)
-- Update the Supabase URL and key at the top of the `<script>` block in `movie_picker.html` to match your setup
+- The Supabase URL and anon key are already set in `index.html` — update them there if you ever switch projects
 
 ---
 
@@ -34,7 +34,7 @@ The server can start automatically every time your Mac logs in so you never need
 launchctl load ~/Library/LaunchAgents/com.evan.moviepicker.plist
 ```
 
-After that, the server runs in the background automatically. Supabase also auto-restarts via Docker on login, so the whole app is ready as soon as your Mac is on.
+After that, the server runs in the background automatically every time your Mac starts.
 
 **Stop the server:**
 ```bash
@@ -54,12 +54,12 @@ Any device on the same WiFi network can open the app in a browser — no install
 
 **Preferred (hostname — doesn't change):**
 ```
-http://Evans-MacBook-Air.local:8080/movie_picker.html
+http://Evans-MacBook-Air.local:8080/
 ```
 
 **Backup (IP address):**
 ```
-http://192.168.68.68:8080/movie_picker.html
+http://192.168.68.68:8080/
 ```
 
 To find your current IP if it ever changes:
@@ -82,7 +82,7 @@ cd ~/movie-picker
 python3 -m http.server 8080
 ```
 
-Then open `http://localhost:8080/movie_picker.html` in your browser.
+Then open `http://localhost:8080/` in your browser.
 
 ---
 
